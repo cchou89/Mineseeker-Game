@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MineSeek</string>
+
+    <string name="title_activity_mine_seek_game">MineSeekGame</string>
+    <string name="start">START</string>
+    <string name="options">OPTIONS</string>
+    <string name="help">HELP</string>
+    <string name="skip">SKIP</string>
+    <string name="main_menu">MAIN MENU</string>
+    <string name="mines_found">Found %1$d of %2$d Mines</string>
+    <string name="scans_used"># of Scans Used: %d</string>
+    <string name="times_played">Times PLayed: %d</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="congratulations">Congratulation! You won!</string>
+    <string name="settings">SETTINGS</string>
+    <string name="board_size">Board Size</string>
+    <string name="number_of_mines"># of Mines</string>
+    <string name="reset_times">Reset Times Played</string>
+</resources>
