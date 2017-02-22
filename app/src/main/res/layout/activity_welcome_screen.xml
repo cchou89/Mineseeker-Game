@@ -40,4 +40,5 @@ tools:context="com.assignment2.medipack.mineseek.MainMenu">
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
     android:id="@+id/welcome_authors" />
+
 </RelativeLayout>

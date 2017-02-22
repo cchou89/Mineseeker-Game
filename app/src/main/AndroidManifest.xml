@@ -4,27 +4,25 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/mine_seek"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="userLandscape">
-        <activity android:name=".MainMenu"
+        <activity android:name=".WelcomeScreen"
             android:screenOrientation="userLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainMenu"
+            android:screenOrientation="userLandscape"></activity>
         <activity android:name=".OptionsMenu"
             android:screenOrientation="userLandscape" />
         <activity android:name=".MineSeekGame"
             android:screenOrientation="userLandscape"/>
         <activity android:name=".HelpMenu"
             android:screenOrientation="userLandscape" />
-        <activity android:name=".WelcomeScreen"
-            android:screenOrientation="userLandscape"></activity>
     </application>
-
 </manifest>
