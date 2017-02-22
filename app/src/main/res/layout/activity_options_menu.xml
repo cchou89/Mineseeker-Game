@@ -10,4 +10,79 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.assignment2.medipack.mineseek.OptionsMenu">
 
+    <TextView
+        android:text="@string/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/options_title"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:text="@string/board_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/options_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp"
+        android:id="@+id/options_board_size"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="@string/number_of_mines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/options_board_size"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:id="@+id/options_num_mines"
+        android:textSize="18sp" />
+
+    <RadioButton
+        android:text="4 x 6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/boardSmall"
+        android:layout_alignBaseline="@+id/options_board_size"
+        android:layout_alignBottom="@+id/options_board_size"
+        android:layout_toRightOf="@+id/options_title"
+        android:layout_toEndOf="@+id/options_title" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:layout_alignTop="@+id/options_num_mines"
+        android:layout_alignLeft="@+id/boardSmall"
+        android:layout_alignStart="@+id/boardSmall"
+        android:scrollIndicators="right" />
+
+    <RadioButton
+        android:text="5 x 10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/boardMedium"
+        android:layout_alignBaseline="@+id/boardSmall"
+        android:layout_alignBottom="@+id/boardSmall"
+        android:layout_toRightOf="@+id/boardSmall"
+        android:layout_toEndOf="@+id/boardSmall"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp" />
+
+    <RadioButton
+        android:text="6 x 15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/boardLarge"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_alignBaseline="@+id/boardMedium"
+        android:layout_alignBottom="@+id/boardMedium"
+        android:layout_toRightOf="@+id/boardMedium"
+        android:layout_toEndOf="@+id/boardMedium" />
 </RelativeLayout>

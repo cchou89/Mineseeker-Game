@@ -16,4 +16,6 @@
     <string name="board_size">Board Size</string>
     <string name="number_of_mines"># of Mines</string>
     <string name="reset_times">Reset Times Played</string>
+    <string name="authors">Calvin C and Gurneak S</string>
+    <string name="play_game">PLAY GAME!</string>
 </resources>
