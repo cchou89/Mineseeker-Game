@@ -18,4 +18,6 @@
     <string name="reset_times">Reset Times Played</string>
     <string name="authors">Calvin C and Gurneak S</string>
     <string name="play_game">PLAY GAME!</string>
+    <string name="help_header">Help</string>
+    <string name="placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in magna cursus, rutrum est ac, blandit elit. Aliquam sit amet dolor at neque venenatis malesuada ut vel mauris. Suspendisse risus nulla, auctor quis metus sed, eleifend facilisis ante. Quisque vel quam quis odio laoreet consequat ac id mauris. Pellentesque vehicula augue sed lectus pretium, quis lobortis odio elementum. Sed tempus euismod nisl, ut lobortis eros venenatis et. Praesent ut tellus feugiat diam mattis rutrum. Proin vel pretium turpis. Ut a ipsum ipsum. Suspendisse vitae quam facilisis turpis ultricies cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas tellus a fermentum sollicitudin. Curabitur euismod fermentum ullamcorper.</string>
 </resources>
