@@ -8,8 +8,8 @@ import android.widget.TableRow;
 
 public class MineSeekGame extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 2;
-    private static final int NUM_COLS = 3;
+    private static final int NUM_ROWS = 4;
+    private static final int NUM_COLS = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +25,14 @@ public class MineSeekGame extends AppCompatActivity {
             tableRow.setLayoutParams(new TableLayout.LayoutParams(
                     TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.MATCH_PARENT,
-                    1.0f
-            ));
+                    1.0f));
             table.addView(tableRow);
             for(int col = 0; col < NUM_COLS; col++) {
                 Button buttonMine = new Button(this);
-                buttonMine.setLayoutParams(new TableLayout.LayoutParams(
+                buttonMine.setLayoutParams(new TableRow.LayoutParams(
                         TableLayout.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.MATCH_PARENT,
-                        1.0f
-                ));
+                        1.0f));
                 tableRow.addView(buttonMine);
             }
         }

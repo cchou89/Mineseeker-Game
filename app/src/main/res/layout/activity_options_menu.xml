@@ -44,7 +44,7 @@
         android:textSize="18sp" />
 
     <RadioButton
-        android:text="4 x 6"
+        android:text="@string/_4_x_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/boardSmall"
@@ -63,7 +63,7 @@
         android:scrollIndicators="right" />
 
     <RadioButton
-        android:text="5 x 10"
+        android:text="@string/_5_x_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/boardMedium"
@@ -75,7 +75,7 @@
         android:layout_marginStart="49dp" />
 
     <RadioButton
-        android:text="6 x 15"
+        android:text="@string/_6_x_15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/boardLarge"
