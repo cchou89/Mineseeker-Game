@@ -16,4 +16,11 @@
     <string name="board_size">Board Size</string>
     <string name="number_of_mines"># of Mines</string>
     <string name="reset_times">Reset Times Played</string>
+    <string name="authors">Calvin C and Gurneak S</string>
+    <string name="play_game">PLAY GAME!</string>
+    <string name="help_header">Help</string>
+    <string name="placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in magna cursus, rutrum est ac, blandit elit. Aliquam sit amet dolor at neque venenatis malesuada ut vel mauris. Suspendisse risus nulla, auctor quis metus sed, eleifend facilisis ante. Quisque vel quam quis odio laoreet consequat ac id mauris. Pellentesque vehicula augue sed lectus pretium, quis lobortis odio elementum. Sed tempus euismod nisl, ut lobortis eros venenatis et. Praesent ut tellus feugiat diam mattis rutrum. Proin vel pretium turpis. Ut a ipsum ipsum. Suspendisse vitae quam facilisis turpis ultricies cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas tellus a fermentum sollicitudin. Curabitur euismod fermentum ullamcorper.</string>
+    <string name="_4_x_6">4 x 6</string>
+    <string name="_5_x_10">5 x 10</string>
+    <string name="_6_x_15">6 x 15</string>
 </resources>
