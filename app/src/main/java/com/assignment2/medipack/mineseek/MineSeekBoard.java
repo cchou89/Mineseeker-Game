@@ -1,5 +1,8 @@
 package com.assignment2.medipack.mineseek;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Medipack on 2017-02-20.
  */
@@ -10,7 +13,7 @@ public class MineSeekBoard extends Mine{
     private int numMines;
     private int score;
     private int numScans;
-    Mine mineList[];
+    List<Mine> mineList;
     Mine gameBoard[][];
 
     //Default Constructor
@@ -21,7 +24,7 @@ public class MineSeekBoard extends Mine{
         score = 0;
         numScans=0;
         //Handy dandy list of mine locations
-        mineList = new Mine[numMines];
+        mineList = new ArrayList<Mine>();
         //Build the gameboard
         for (int i = 0; i< cols; i++){
             gameBoard [i] = new Mine[rows];
@@ -33,7 +36,8 @@ public class MineSeekBoard extends Mine{
             placeMines(randRow, randCol);
         }
     }
-    //Parameterized
+
+    //Parameterized Constructor
     MineSeekBoard(int rows, int cols, int mines){
         setRows(rows);
         setCols(cols);
@@ -91,20 +95,54 @@ public class MineSeekBoard extends Mine{
     //Gameplay Functions
     private void placeMines(int randRow, int randCol) {
         //TODO: places mines according to coordinates entered into arguments
+        Mine mine = gameBoard[randRow][randCol];
+        mine.setMine(true);
+        mineList.add(mine);
     }
     
-    public int scanMines(){
-        //// TODO: 2017-02-22 Implement algorithm to scan mines in the column and row 
-        return 0;
+    public int scanMines(Mine space){
+        //// TODO: 2017-02-22 Implement algorithm to scan mines in the column and row
+        int numMines = 0;
+        int row = space.getRowCoord();
+        int col = space.getColCoord();
+//        for (int i = 0; i < boardSizeRows; i++){
+//            if (gameBoard[i][col].getMineStatus()){
+//                numMines++;
+//            }
+//        }
+        for (int i = 0; i < mineList.size() ; i++){
+            if(mineList.get(i).getColCoord()==col){
+                numMines++;
+            }else if (mineList.get(i).getRowCoord() == row){
+                numMines++;
+            }
+        }
+        return numMines;
     }
 
-    public boolean checkSquare(){
-        boolean isAMine = false;
+    public boolean checkSquare(Mine space){
+        boolean isAMine = space.getMineStatus();
         return isAMine;
     }
 
-    public void selectMine(){
-
+    public void selectMine(Mine space){
+        int numMines = scanMines(space);
+        if(checkSquare(space)){
+            /*
+            Code for indicating you found mine
+             */
+            score++;
+        }
+        //set the number of number of mines in this square
+        space.setNearbyMines(numMines);
+        numScans++;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public int getNumScans() {
+        return numScans;
+    }
 }

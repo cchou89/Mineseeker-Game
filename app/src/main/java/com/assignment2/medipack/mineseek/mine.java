@@ -17,11 +17,13 @@ public class Mine {
         colCoord = 0;
     }
 
-    Mine(boolean mineStatus){
+    Mine(boolean mineStatus, int row, int col){
         isMine = mineStatus;
         nearbyMines = 1;
+        rowCoord = row;
+        colCoord = col;
     }
-
+    //Getters
     public int getNearbyMines() {
         return nearbyMines;
     }
@@ -30,6 +32,15 @@ public class Mine {
         return isMine;
     }
 
+    public int getRowCoord() {
+        return rowCoord;
+    }
+
+    public int getColCoord() {
+        return colCoord;
+    }
+
+    //Setters
     public void setMine(boolean mine) {
         isMine = mine;
     }
