@@ -99,7 +99,6 @@ public class MineSeekBoard extends Mine{
         int row = seed.nextInt(rows);
         return row;
     }
-
     private int randomCol(){
         Random seed = new Random();
         int col = seed.nextInt(cols);
