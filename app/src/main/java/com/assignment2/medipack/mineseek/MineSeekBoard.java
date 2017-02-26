@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by Medipack on 2017-02-20.
+ * Mineseeker board class file
+ * for housing all the game data and actions needed for the MineSeeker game
  */
 
 public class MineSeekBoard extends Mine{

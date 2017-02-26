@@ -23,4 +23,6 @@
     <string name="_4_x_6">4 x 6</string>
     <string name="_5_x_10">5 x 10</string>
     <string name="_6_x_15">6 x 15</string>
+    <string name="score_d">score: %d</string>
+    <string name="back">Back</string>
 </resources>

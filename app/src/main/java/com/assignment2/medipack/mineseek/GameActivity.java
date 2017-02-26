@@ -11,15 +11,17 @@ import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
     private static final String TAG = "MineSeek";
+    Game game = Game.getInstance();
+    int rows = game.rowSettings;
+    int cols = game.colSettings;
+    Button buttonGrid[][] = new Button[rows][cols];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_seek_game);
         //Pull data from Game class
-        Game game = Game.getInstance();
         MineSeekBoard board = game.newGame;
-        int rows = game.rowSettings;
-        int cols = game.colSettings;
         //Populate the grid with buttons
         populateButtons(rows, cols, board);
         TextView score = (TextView) findViewById(R.id.score);
@@ -36,28 +38,33 @@ public class GameActivity extends AppCompatActivity {
                     1.0f));
             table.addView(tableRow);
             for(int col = 0; col < cols; col++) {
-                final Button buttonMine = new Button(this);
+                Button buttonMine = new Button(this);
                 buttonMine.setLayoutParams(new TableRow.LayoutParams(
                         TableLayout.LayoutParams.MATCH_PARENT,
                         TableLayout.LayoutParams.MATCH_PARENT,
                         1.0f));
-                tableRow.addView(buttonMine);
+                //Make text not clip on small buttons
+                buttonMine.setPadding(0, 0, 0, 0);
                 final int finalRow = row;
                 final int finalCol = col;
                 buttonMine.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Mine space = board.getGameBoard()[finalRow][finalCol];
+                        Button button = buttonGrid[finalRow][finalCol];
                         board.selectSpace(space);
                         String msg = String.format("%d", space.getNearbyMines());
                         Log.i(TAG, msg);
                         if(space.getMineStatus()){
-                            buttonMine.setText("Mine");
+                            button.setText("Mine");
                         }   else {
-                            buttonMine.setText(msg);
+                            button.setText(msg);
                         }
                     }
                 });
+                tableRow.addView(buttonMine);
+                buttonMine.setBackgroundResource(R.drawable.bush);
+                buttonGrid[row][col]= buttonMine;
             }
         }
     }

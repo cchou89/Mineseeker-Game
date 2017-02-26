@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainMenu"
-            android:screenOrientation="userLandscape"></activity>
+            android:screenOrientation="userLandscape">
+        </activity>
         <activity android:name=".OptionsMenu"
             android:screenOrientation="userLandscape" />
         <activity android:name=".GameActivity"
