@@ -9,7 +9,7 @@ public class Game {
     public int rowSettings;
     public int colSettings;
     public int mineSettings;
-    public int numGamesPlayed;
+    private int numGamesPlayed;
     public MineSeekBoard newGame;
 
     public static Game getInstance(){
@@ -31,5 +31,9 @@ public class Game {
 
     public void resetGameCount(){
         numGamesPlayed = 0;
+    }
+
+    public int getNumGamesPlayed() {
+        return numGamesPlayed;
     }
 }

@@ -2,6 +2,7 @@ package com.assignment2.medipack.mineseek;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Medipack on 2017-02-20.
@@ -13,8 +14,8 @@ public class MineSeekBoard extends Mine{
     private int numMines;
     private int score;
     private int numScans;
-    List<Mine> mineList;
-    Mine gameBoard[][];
+    private List<Mine> mineList;
+    private Mine[][] gameBoard;
 
     //Default Constructor
     MineSeekBoard(){
@@ -26,29 +27,33 @@ public class MineSeekBoard extends Mine{
         //Handy dandy list of mine locations
         mineList = new ArrayList<Mine>();
         //Build the gameboard
-        for (int i = 0; i< cols; i++){
-            gameBoard [i] = new Mine[rows];
-        }
-        //set up the mines
-        for (int i = 0; i < numMines; i++){
-            int randRow = randomRow();
-            int randCol = randomCol();
-            placeMines(randRow, randCol);
-        }
+        buildBoard(rows, cols, numMines);
     }
 
     //Parameterized Constructor
-    MineSeekBoard(int rows, int cols, int mines){
-        setRows(rows);
-        setCols(cols);
-        setNumMines(mines);
+    MineSeekBoard(int rows, int cols, int mines) {
+        this.rows= rows;
+        this.cols = cols;
+        numMines = mines;
         score = 0;
-        numScans=0;
+        numScans = 0;
+        //Handy dandy list of mine locations
+        mineList = new ArrayList<Mine>();
+        buildBoard(rows, cols, numMines);
 
+    }
 
-        Mine gameBoard[][]= new Mine [rows][cols];
-
-        for (int i = 0; i < numMines; i++){
+    public void buildBoard(int rows, int cols, int numMines) {
+        //Build the gameboard
+        gameBoard = new Mine[rows][];
+        for (int i = 0; i < rows; i++) {
+            gameBoard[i] = new Mine[cols];
+            for (int j = 0; j<cols ; j++){
+                gameBoard[i][j] = new Mine(false, i, j);
+            }
+        }
+        //set up the mines
+        for (int i = 0; i < numMines; i++) {
             int randRow = randomRow();
             int randCol = randomCol();
             placeMines(randRow, randCol);
@@ -58,17 +63,24 @@ public class MineSeekBoard extends Mine{
     //Setters
     public void setRows(int rowNum){
         rows = rowNum;
+        buildBoard(rows, cols, numMines);
     }
 
     public void setCols(int colNum){
         cols = colNum;
+        buildBoard(rows, cols, numMines);
     }
 
     public void setNumMines(int numMines) {
         this.numMines = numMines;
+        buildBoard(rows, cols, numMines);
     }
 
     //Getters
+    public Mine[][] getGameBoard(){
+        return gameBoard;
+    }
+
     public int getRows(){
         return rows;
     }
@@ -83,35 +95,38 @@ public class MineSeekBoard extends Mine{
 
     //Randomize
     private int randomRow(){
-        //TODO implement row randomizing algorithm
-        return 0;
+        Random seed = new Random();
+        int row = seed.nextInt(rows);
+        return row;
     }
 
     private int randomCol(){
-        //TODO implement column randomizing algorithm
-        return 0;
+        Random seed = new Random();
+        int col = seed.nextInt(cols);
+        return col;
     }
 
     //Gameplay Functions
-    private void placeMines(int randRow, int randCol) {
-        //TODO: places mines according to coordinates entered into arguments
-        Mine mine = gameBoard[randRow][randCol];
-        mine.setMine(true);
-        mineList.add(mine);
+    public void placeMines(int randRow, int randCol) {
+            Mine mine = gameBoard[randRow][randCol];
+            //check if there's already a mine there
+            while (mine.getMineStatus()) {
+                //place it somewhere else
+                int row = randomRow();
+                int col = randomCol();
+                mine = gameBoard[row][col];
+            }
+            mine.setMine(true);
+            mineList.add(mine);
     }
     
     public int scanMines(Mine space){
-        //// TODO: 2017-02-22 Implement algorithm to scan mines in the column and row
         int numMines = 0;
         int row = space.getRowCoord();
         int col = space.getColCoord();
-//        for (int i = 0; i < boardSizeRows; i++){
-//            if (gameBoard[i][col].getMineStatus()){
-//                numMines++;
-//            }
-//        }
         for (int i = 0; i < mineList.size() ; i++){
-            if(mineList.get(i).getColCoord()==col){
+            Mine mine = mineList.get(i);
+            if(mine.getColCoord()==col){
                 numMines++;
             }else if (mineList.get(i).getRowCoord() == row){
                 numMines++;
@@ -125,12 +140,9 @@ public class MineSeekBoard extends Mine{
         return isAMine;
     }
 
-    public void selectMine(Mine space){
+    public void selectSpace(Mine space){
         int numMines = scanMines(space);
         if(checkSquare(space)){
-            /*
-            Code for indicating you found mine
-             */
             score++;
         }
         //set the number of number of mines in this square

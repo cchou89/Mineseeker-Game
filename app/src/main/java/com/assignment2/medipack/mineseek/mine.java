@@ -19,7 +19,7 @@ public class Mine {
 
     Mine(boolean mineStatus, int row, int col){
         isMine = mineStatus;
-        nearbyMines = 1;
+        nearbyMines = 0;
         rowCoord = row;
         colCoord = col;
     }
