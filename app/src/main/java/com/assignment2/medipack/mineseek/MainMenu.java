@@ -9,6 +9,8 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
+    private MineSeekBoard gameBoard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,7 @@ public class MainMenu extends AppCompatActivity {
         Button optionsBtn = getButtonId(R.id.main_options);
         Button helpBtn = getButtonId(R.id.main_help);
         //Assigning Button functions
-        playGameBtn.setOnClickListener(getListener(MineSeekGame.class));
+        playGameBtn.setOnClickListener(getListener(MineSeekGameActivity.class));
         optionsBtn.setOnClickListener(getListener(OptionsMenu.class));
         helpBtn.setOnClickListener(getListener(HelpMenu.class));
     }

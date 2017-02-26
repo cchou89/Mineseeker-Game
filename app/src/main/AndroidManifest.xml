@@ -20,7 +20,7 @@
             android:screenOrientation="userLandscape"></activity>
         <activity android:name=".OptionsMenu"
             android:screenOrientation="userLandscape" />
-        <activity android:name=".MineSeekGame"
+        <activity android:name=".MineSeekGameActivity"
             android:screenOrientation="userLandscape"/>
         <activity android:name=".HelpMenu"
             android:screenOrientation="userLandscape" />

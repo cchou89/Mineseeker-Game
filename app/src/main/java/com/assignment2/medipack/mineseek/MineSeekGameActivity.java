@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-public class MineSeekGame extends AppCompatActivity {
+public class MineSeekGameActivity extends AppCompatActivity {
 
     private static final int NUM_ROWS = 4;
     private static final int NUM_COLS = 6;
