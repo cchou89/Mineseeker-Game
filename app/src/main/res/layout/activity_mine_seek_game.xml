@@ -33,11 +33,11 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:text="@string/score_d"
+        android:text="@string/mines_found"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/gameBoard"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/score" />
+        android:id="@+id/minesFound" />
 </RelativeLayout>

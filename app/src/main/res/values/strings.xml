@@ -25,4 +25,6 @@
     <string name="_6_x_15">6 x 15</string>
     <string name="score_d">score: %d</string>
     <string name="back">Back</string>
+    <string name="ok">ok</string>
+    <string name="congratulations_you_won">Congratulations! You won!</string>
 </resources>
