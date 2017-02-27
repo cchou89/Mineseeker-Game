@@ -20,17 +20,28 @@
         android:id="@+id/help_title"
         android:textSize="18sp" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/help_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+    <Button
+        android:text="@string/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/help_back"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/help_text"
-            android:text="@string/placeholder" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/helpFrame">
+
     </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/help_text"
+        android:text="@string/placeholder"
+        android:layout_below="@+id/help_title"
+        android:layout_toRightOf="@+id/helpFrame"
+        android:layout_toEndOf="@+id/helpFrame" />
 </RelativeLayout>

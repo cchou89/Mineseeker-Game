@@ -5,25 +5,26 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by Medipack on 2017-02-20.
+ * Mineseeker board class file
+ * for housing all the game data and actions needed for the MineSeeker game
  */
 
-public class MineSeekBoard extends Mine{
+public class MineSeekBoard extends Mine {
     private int rows;
     private int cols;
     private int numMines;
-    private int score;
+    private int minesFound;
     private int numScans;
     private List<Mine> mineList;
     private Mine[][] gameBoard;
 
     //Default Constructor
-    MineSeekBoard(){
+    MineSeekBoard() {
         rows = 4;
         cols = 6;
         numMines = 9;
-        score = 0;
-        numScans=0;
+        minesFound = 0;
+        numScans = 0;
         //Handy dandy list of mine locations
         mineList = new ArrayList<Mine>();
         //Build the gameboard
@@ -32,10 +33,10 @@ public class MineSeekBoard extends Mine{
 
     //Parameterized Constructor
     MineSeekBoard(int rows, int cols, int mines) {
-        this.rows= rows;
+        this.rows = rows;
         this.cols = cols;
         numMines = mines;
-        score = 0;
+        minesFound = 0;
         numScans = 0;
         //Handy dandy list of mine locations
         mineList = new ArrayList<Mine>();
@@ -48,7 +49,7 @@ public class MineSeekBoard extends Mine{
         gameBoard = new Mine[rows][];
         for (int i = 0; i < rows; i++) {
             gameBoard[i] = new Mine[cols];
-            for (int j = 0; j<cols ; j++){
+            for (int j = 0; j < cols; j++) {
                 gameBoard[i][j] = new Mine(false, i, j);
             }
         }
@@ -61,12 +62,12 @@ public class MineSeekBoard extends Mine{
     }
 
     //Setters
-    public void setRows(int rowNum){
+    public void setRows(int rowNum) {
         rows = rowNum;
         buildBoard(rows, cols, numMines);
     }
 
-    public void setCols(int colNum){
+    public void setCols(int colNum) {
         cols = colNum;
         buildBoard(rows, cols, numMines);
     }
@@ -77,15 +78,15 @@ public class MineSeekBoard extends Mine{
     }
 
     //Getters
-    public Mine[][] getGameBoard(){
+    public Mine[][] getGameBoard() {
         return gameBoard;
     }
 
-    public int getRows(){
+    public int getRows() {
         return rows;
     }
 
-    public int getCols(){
+    public int getCols() {
         return cols;
     }
 
@@ -93,14 +94,23 @@ public class MineSeekBoard extends Mine{
         return numMines;
     }
 
+    public int getMinesFound() {
+        return minesFound;
+    }
+
+    public int getNumScans() {
+        return numScans;
+    }
+
     //Randomize
-    private int randomRow(){
+        //Random Row
+    private int randomRow() {
         Random seed = new Random();
         int row = seed.nextInt(rows);
         return row;
     }
-
-    private int randomCol(){
+        //Random Column
+    private int randomCol() {
         Random seed = new Random();
         int col = seed.nextInt(cols);
         return col;
@@ -108,53 +118,67 @@ public class MineSeekBoard extends Mine{
 
     //Gameplay Functions
     public void placeMines(int randRow, int randCol) {
-            Mine mine = gameBoard[randRow][randCol];
-            //check if there's already a mine there
-            while (mine.getMineStatus()) {
-                //place it somewhere else
-                int row = randomRow();
-                int col = randomCol();
-                mine = gameBoard[row][col];
-            }
-            mine.setMine(true);
-            mineList.add(mine);
+        Mine mine = gameBoard[randRow][randCol];
+        //check if there's already a mine there
+        while (checkSquare(mine)) {
+            //place it somewhere else
+            int row = randomRow();
+            int col = randomCol();
+            mine = gameBoard[row][col];
+        }
+        mine.setMine(true);
+        mineList.add(mine);
     }
-    
-    public int scanMines(Mine space){
+
+    public int scanMines(Mine space) {
         int numMines = 0;
         int row = space.getRowCoord();
         int col = space.getColCoord();
-        for (int i = 0; i < mineList.size() ; i++){
+        for (int i = 0; i < mineList.size(); i++) {
+            //Pull mine records from the list
             Mine mine = mineList.get(i);
-            if(mine.getColCoord()==col){
+            int checkRow = mine.getRowCoord();
+            int checkCol = mine.getColCoord();
+            //If the space is in the same column as the mine and the mine ISN'T uncovered
+            if (mineList.get(i).getColCoord() == col) {
                 numMines++;
-            }else if (mineList.get(i).getRowCoord() == row){
+                //If the space is in the same row and the mine ISN'T uncovered
+            } else if (mineList.get(i).getRowCoord() == row) {
                 numMines++;
             }
         }
         return numMines;
     }
 
-    public boolean checkSquare(Mine space){
-        boolean isAMine = space.getMineStatus();
+    public boolean checkSquare(Mine space) {
+        boolean isAMine = space.isMine();
         return isAMine;
     }
 
-    public void selectSpace(Mine space){
-        int numMines = scanMines(space);
-        if(checkSquare(space)){
-            score++;
+    public void selectSpace(Mine space) {
+        //Check square for mines
+        if (checkSquare(space)) {
+            minesFound++;
+            //update nearby spaces
+            int targetRow = space.getRowCoord();
+            int targetCol = space.getColCoord();
+            //update vertically on nearby mines
+            for(int i = 0; i < rows; i++){
+                Mine mine = gameBoard[i][targetCol];
+                int nearbyMines = mine.getNearbyMines();
+                nearbyMines--;
+                mine.setNearbyMines(nearbyMines);
+            }
+            //update horizontally
+            for(int i = 0; i < cols; i++){
+                Mine mine = gameBoard[targetRow][i];
+                int nearbyMines = mine.getNearbyMines();
+                nearbyMines--;
+                mine.setNearbyMines(nearbyMines);
+            }
+        }else{
+            numScans++;
         }
-        //set the number of number of mines in this square
-        space.setNearbyMines(numMines);
-        numScans++;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public int getNumScans() {
-        return numScans;
     }
 }
+

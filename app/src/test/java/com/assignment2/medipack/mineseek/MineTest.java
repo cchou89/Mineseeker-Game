@@ -1,6 +1,7 @@
 package com.assignment2.medipack.mineseek;
 
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
@@ -28,7 +29,7 @@ public class MineTest {
     @Test
     public void getMineStatus() throws Exception {
         Mine testMine = new Mine();
-        assertEquals(false, testMine.getMineStatus());
+        assertEquals(false, testMine.isMine());
     }
 
     @Test
@@ -48,7 +49,7 @@ public class MineTest {
         boolean isMine = true;
         Mine testMine = new Mine();
         testMine.setMine(isMine);
-        assertEquals(isMine, testMine.getMineStatus());
+        assertEquals(isMine, testMine.isMine());
     }
 
     @Test
@@ -75,4 +76,10 @@ public class MineTest {
         assertEquals(col, testMine.getRowCoord());
     }
 
+    @Test
+    public void testNegative() throws Exception {
+        Mine testMine = new Mine();
+        testMine.setNearbyMines(-1);
+        assertEquals(0, testMine.getNearbyMines());
+    }
 }

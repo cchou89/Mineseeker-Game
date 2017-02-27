@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
-
-    private MineSeekBoard gameBoard;
-
+    private static final String TAG = "MineSeek";
+    //get Game instance
+    Game game = Game.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,14 @@ public class MainMenu extends AppCompatActivity {
         Button optionsBtn = getButtonId(R.id.main_options);
         Button helpBtn = getButtonId(R.id.main_help);
         //Assigning Button functions
-        playGameBtn.setOnClickListener(getListener(MineSeekGameActivity.class));
+        playGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent(GameActivity.class);
+                game.startGame();
+                startActivity(intent);
+            }
+        });
         optionsBtn.setOnClickListener(getListener(OptionsMenu.class));
         helpBtn.setOnClickListener(getListener(HelpMenu.class));
     }
