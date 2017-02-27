@@ -79,15 +79,6 @@
             android:layout_weight="1" />
     </RadioGroup>
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner2"
-        android:scrollIndicators="right"
-        android:layout_alignBottom="@+id/options_num_mines"
-        android:layout_alignLeft="@+id/boardSize"
-        android:layout_alignStart="@+id/boardSize" />
-
     <Button
         android:text="@string/back"
         android:layout_width="wrap_content"
@@ -105,5 +96,42 @@
         android:layout_above="@+id/options_cancel"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/options_num_mines"
+        android:layout_alignLeft="@+id/boardSize"
+        android:layout_alignStart="@+id/boardSize"
+        android:id="@+id/mineNumbers">
+
+        <RadioButton
+            android:text="@string/_6_mines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sixMines"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/_10_mines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tenMines"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/_15_mines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fifteenMines"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="@string/_20_mines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/twentyMines"
+            android:layout_weight="1" />
+    </RadioGroup>
 
 </RelativeLayout>

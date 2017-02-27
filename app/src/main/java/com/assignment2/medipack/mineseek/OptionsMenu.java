@@ -10,9 +10,12 @@ import android.widget.RadioGroup;
 
 public class OptionsMenu extends AppCompatActivity {
 
+    public static final int MED_MINES = 10;
+    public static final int LRG_MINES = 15;
+    public static final int XLRG_MINES = 20;
     static int DEFAULT_ROW = 4;
     static int DEFAULT_COL = 6;
-    static int DEFAULT_MINES = 9;
+    static int DEFAULT_MINES = 6;
     static int ROW_MED = 5;
     static int COL_MED = 10;
     static int ROW_LRG = 6;
@@ -51,6 +54,32 @@ public class OptionsMenu extends AppCompatActivity {
             }
         });
 
+        final RadioGroup numbers = (RadioGroup) findViewById(R.id.mineNumbers);
+        numbers.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup numbers, int checkedId) {
+                View radioButton = numbers.findViewById(checkedId);
+                int index = numbers.indexOfChild(radioButton);
+
+                switch (index) {
+                    case 0: // 6 mines
+                        mines = DEFAULT_MINES;
+                        break;
+                    case 1: // 10 mines
+                        mines = MED_MINES;
+                        break;
+
+                    case 2: // 15 mines
+                        mines = LRG_MINES;
+                        break;
+
+                    case 3: //20 mines
+                        mines = XLRG_MINES;
+                        break;
+                }
+            }
+        });
+
         Button cancelBtn = (Button) findViewById(R.id.options_cancel);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +94,7 @@ public class OptionsMenu extends AppCompatActivity {
             public void onClick(View v) {
                 game.rowSettings = row;
                 game.colSettings = col;
+                game.mineSettings = mines;
                 game.startGame();
                 finish();
             }

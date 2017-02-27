@@ -27,4 +27,8 @@
     <string name="back">Back</string>
     <string name="ok">ok</string>
     <string name="congratulations_you_won">Congratulations! You won!</string>
+    <string name="_20_mines">20 Mines</string>
+    <string name="_10_mines">10 Mines</string>
+    <string name="_15_mines">15 Mines</string>
+    <string name="_6_mines">6 Mines</string>
 </resources>
