@@ -157,7 +157,7 @@ public class MineSeekBoard extends Mine {
 
     public void selectSpace(Mine space) {
         //Check square for mines
-        if (checkSquare(space)) {
+        if (checkSquare(space) && !space.isUncovered()) {
             minesFound++;
             //update nearby spaces
             int targetRow = space.getRowCoord();
@@ -176,7 +176,7 @@ public class MineSeekBoard extends Mine {
                 nearbyMines--;
                 mine.setNearbyMines(nearbyMines);
             }
-        }else{
+        }else if(!space.isUncovered()){
             numScans++;
         }
     }
