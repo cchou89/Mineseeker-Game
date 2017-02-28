@@ -20,7 +20,6 @@ public class messageFragment extends AppCompatDialogFragment {
         View v = LayoutInflater
                 .from(getActivity())
                 .inflate(R.layout.congratulations_layout, null);
-        v.setBackgroundResource(R.drawable.button);
         //Button listener
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
