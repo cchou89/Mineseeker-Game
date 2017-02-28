@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context="com.assignment2.medipack.mineseek.HelpMenu">
 
     <TextView
@@ -22,26 +23,31 @@
 
     <Button
         android:text="@string/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:id="@+id/help_back"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button"/>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/helpFrame">
+        android:id="@+id/helpFrame"
+        android:layout_below="@+id/help_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/help_text"
+            android:text="@string/placeholder"
+            android:layout_below="@+id/help_title"
+            android:layout_toRightOf="@+id/helpFrame"
+            android:layout_toEndOf="@+id/helpFrame"
+            />
     </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/help_text"
-        android:text="@string/placeholder"
-        android:layout_below="@+id/help_title"
-        android:layout_toRightOf="@+id/helpFrame"
-        android:layout_toEndOf="@+id/helpFrame" />
 </RelativeLayout>
