@@ -2,13 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_welcome_screen"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context="com.assignment2.medipack.mineseek.WelcomeScreen">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_menu_buttons"
+        android:layout_below="@+id/main_title">
+
+        <Button
+            android:text="@string/play_game"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_below="@+id/main_title"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/main_play_game"
+            android:minWidth="300dp"
+            android:minHeight="70dp"
+            android:background="@drawable/button"
+            />
+
+        <Button
+            android:text="@string/options"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_below="@+id/main_play_game"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/main_options"
+            android:minWidth="300dp"
+            android:minHeight="70dp"
+            android:background="@drawable/button"/>
+
+        <Button
+            android:text="@string/help"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:id="@+id/main_help"
+            android:layout_below="@+id/main_options"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:minWidth="300dp"
+            android:minHeight="70dp"
+            android:background="@drawable/button"/>
+    </LinearLayout>
 
     <TextView
         android:text="@string/main_menu"
@@ -16,42 +63,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/main_title"
         android:textSize="36sp"
+        android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
-
-    <Button
-        android:text="@string/play_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/main_play_game"
-        android:minWidth="300dp"
-        android:minHeight="70dp" />
+        android:layout_marginLeft="158dp"
+        android:layout_marginStart="158dp" />
 
-    <Button
-        android:text="@string/options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_play_game"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/main_options"
-        android:minWidth="300dp"
-        android:minHeight="70dp" />
-
-    <Button
-        android:text="@string/help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_help"
-        android:layout_below="@+id/main_options"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:minWidth="300dp"
-        android:minHeight="70dp" />
 </RelativeLayout>
-

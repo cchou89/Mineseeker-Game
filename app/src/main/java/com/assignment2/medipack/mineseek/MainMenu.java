@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainMenu extends AppCompatActivity {
     private static final String TAG = "MineSeek";
@@ -15,10 +16,15 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        //Linear Layout
+        LinearLayout mainMenuBtns = (LinearLayout) findViewById(R.id.main_menu_buttons);
+
         //Buttons
         Button playGameBtn = getButtonId(R.id.main_play_game);
         Button optionsBtn = getButtonId(R.id.main_options);
         Button helpBtn = getButtonId(R.id.main_help);
+
+
         //Assigning Button functions
         playGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
