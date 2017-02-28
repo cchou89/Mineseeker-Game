@@ -62,16 +62,15 @@ public class GameActivity extends AppCompatActivity {
                         board.selectSpace(space);
                         String msg = String.format("%d", space.getNearbyMines());
                         //Find the mine
-                        if(board.checkSquare(space) && !space.isUncovered()){
+                        if(board.checkSquare(space)){
                             //Indicate it's a mine
-                            button.setBackgroundResource(R.drawable.eviljelly);
+                            button.setText("Mine");
                             Log.i(TAG, "Mine");
                             if (!space.isUncovered()){
                                 space.setUncovered(true);
                                 Log.i(TAG, msg);
                                 //update number of mines
                                 updateMinesScore(board);
-                                updateSurroundings(rows, board, finalCol, cols, finalRow);
                             }
                         //Scan the space
                         }else {
@@ -80,7 +79,27 @@ public class GameActivity extends AppCompatActivity {
                             updateNumberOfScans(board);
                             Log.i(TAG, msg);
                         }
-
+                        //Update surrounding spaces for nearby Mines
+                        //Vertically
+                        for(int i = 0; i < rows; i++){
+                            Mine target = board.getGameBoard()[i][finalCol];
+                            Button vertBtn = buttonGrid[i][finalCol];
+                            if (target.isUncovered() && !target.isMine()){
+                                int nearbyMines = target.getNearbyMines();
+                                String newMsg = String.format("%d", nearbyMines);
+                                vertBtn.setText(newMsg);
+                            }
+                        }
+                        //Horizontally
+                        for(int i = 0; i < cols; i++){
+                            Mine target = board.getGameBoard()[finalRow][i];
+                            Button horizBtn = buttonGrid[finalRow][i];
+                            if (target.isUncovered() && !target.isMine()){
+                                int nearbyMines = target.getNearbyMines();
+                                String newMsg = String.format("%d", nearbyMines);
+                                horizBtn.setText(newMsg);
+                            }
+                        }
                         //Check Game Over conditions
                         if(board.getMinesFound() == board.getNumMines()){
                             gameOverDialog();
@@ -92,30 +111,6 @@ public class GameActivity extends AppCompatActivity {
                 buttonGrid[row][col]= buttonMine;
                 Mine spaceLoc = board.getGameBoard()[row][col];
                 spaceLoc.setNearbyMines(board.scanMines(spaceLoc));
-            }
-        }
-    }
-
-    public void updateSurroundings(int rows, MineSeekBoard board, int finalCol, int cols, int finalRow) {
-        //Update surrounding spaces for nearby Mines
-        //Vertically
-        for(int i = 0; i < rows; i++){
-            Mine target = board.getGameBoard()[i][finalCol];
-            Button vertBtn = buttonGrid[i][finalCol];
-            if (target.isUncovered() && !target.isMine()){
-                int nearbyMines = target.getNearbyMines();
-                String newMsg = String.format("%d", nearbyMines);
-                vertBtn.setText(newMsg);
-            }
-        }
-        //Horizontally
-        for(int i = 0; i < cols; i++){
-            Mine target = board.getGameBoard()[finalRow][i];
-            Button horizBtn = buttonGrid[finalRow][i];
-            if (target.isUncovered() && !target.isMine()){
-                int nearbyMines = target.getNearbyMines();
-                String newMsg = String.format("%d", nearbyMines);
-                horizBtn.setText(newMsg);
             }
         }
     }
