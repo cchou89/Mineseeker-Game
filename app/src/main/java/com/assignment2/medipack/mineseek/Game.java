@@ -21,12 +21,12 @@ public class Game {
         rowSettings = 4;
         colSettings = 6;
         mineSettings = 9;
-        startGame(rowSettings, colSettings, mineSettings);
+        startGame();
         numGamesPlayed++;
     }
 
-    public void startGame(int rows, int cols, int numMines){
-        newGame = new MineSeekBoard(rows, cols, numMines);
+    public void startGame(){
+        newGame = new MineSeekBoard(rowSettings, colSettings, mineSettings);
     }
 
     public void resetGameCount(){

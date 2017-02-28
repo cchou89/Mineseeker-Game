@@ -6,12 +6,14 @@ package com.assignment2.medipack.mineseek;
 
 public class Mine {
     private boolean isMine;
+    private boolean isUncovered;
     private int nearbyMines;
     private int rowCoord;
     private int colCoord;
 
     Mine(){
         isMine = false;
+        isUncovered = false;
         nearbyMines = 0;
         rowCoord = 0;
         colCoord = 0;
@@ -19,17 +21,22 @@ public class Mine {
 
     Mine(boolean mineStatus, int row, int col){
         isMine = mineStatus;
+        isUncovered = false;
         nearbyMines = 0;
         rowCoord = row;
         colCoord = col;
     }
     //Getters
-    public int getNearbyMines() {
-        return nearbyMines;
+    public boolean isMine() {
+        return isMine;
     }
 
-    public boolean getMineStatus() {
-        return isMine;
+    public boolean isUncovered() {
+        return isUncovered;
+    }
+
+    public int getNearbyMines() {
+        return nearbyMines;
     }
 
     public int getRowCoord() {
@@ -45,8 +52,20 @@ public class Mine {
         isMine = mine;
     }
 
+    public void setUncovered(boolean uncovered) {
+        isUncovered = uncovered;
+    }
+
     public void setNearbyMines(int nearbyMines) {
-        this.nearbyMines = nearbyMines;
+        try{
+            if(nearbyMines < 0){
+                throw new IllegalArgumentException();
+            }else{
+                this.nearbyMines = nearbyMines;
+            }
+        }catch(IllegalArgumentException e){
+            this.nearbyMines = 0;
+        }
     }
 
     public void setColCoord(int colCoord) {

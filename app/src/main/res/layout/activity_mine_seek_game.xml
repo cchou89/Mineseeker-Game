@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.assignment2.medipack.mineseek.MineSeekGameActivity">
+    tools:context="com.assignment2.medipack.mineseek.GameActivity">
 
     <TableLayout
         android:id="@+id/gameBoard"
@@ -19,7 +19,25 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="0dp"
         android:stretchColumns="*"
-        >
+        android:layout_above="@+id/numScans">
 
     </TableLayout>
+
+    <TextView
+        android:text="@string/scans_used"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numScans"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/mines_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameBoard"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/minesFound" />
 </RelativeLayout>

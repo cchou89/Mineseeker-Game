@@ -1,6 +1,5 @@
 package com.assignment2.medipack.mineseek;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -76,7 +75,7 @@ public class MineSeekBoardTest {
         assertEquals(0, test.getNearbyMines());
         testBoard.selectSpace(test);
         assertEquals(2, test.getNearbyMines());
-        assertEquals(1, testBoard.getScore());
+        assertEquals(1, testBoard.getMinesFound());
         assertEquals(1, testBoard.getNumScans());
     }
 
