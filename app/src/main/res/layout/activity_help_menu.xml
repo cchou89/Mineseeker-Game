@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_help_menu"
     android:layout_width="match_parent"
@@ -11,16 +12,6 @@
     android:background="@drawable/background"
     tools:context="com.assignment2.medipack.mineseek.HelpMenu">
 
-    <TextView
-        android:text="@string/help_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/help_title"
-        android:textSize="18sp" />
-
     <Button
         android:text="@string/back"
         android:layout_width="100dp"
@@ -31,23 +22,141 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/button"/>
 
-    <FrameLayout
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/helpFrame"
-        android:layout_below="@+id/help_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentBottom="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/help_text"
-            android:text="@string/placeholder"
-            android:layout_below="@+id/help_title"
-            android:layout_toRightOf="@+id/helpFrame"
-            android:layout_toEndOf="@+id/helpFrame"
-            />
-    </FrameLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/help_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/help_title"
+                android:textSize="24sp"
+                android:fontFamily="monospace"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/background_dark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/help_text"
+                android:text="@string/instructions"
+                android:textColor="@android:color/background_dark"
+                android:fontFamily="monospace" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/created_by_calvin_chou_nhttp_www_cs_sfu_ca_coursecentral_276_bfraser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:layout_marginTop="14dp"
+                android:linksClickable="true"
+                android:autoLink="web"
+                android:textColor="@android:color/background_dark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/art_assets_taken_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/disclaimer"
+                android:fontFamily="monospace"
+                android:textColor="@android:color/background_dark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/bush"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/link1"
+                android:linksClickable="true"
+                android:autoLink="web"
+                android:textColor="@android:color/holo_blue_bright" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/jellyLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web"
+                android:id="@+id/link2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/fantasyGUI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/link3"
+                android:linksClickable="true"
+                android:autoLink="web" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/RPGtile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/link4"
+                android:linksClickable="true"
+                android:autoLink="web"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/platformerTile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/link5"
+                android:linksClickable="true"
+                android:autoLink="web"/>
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

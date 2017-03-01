@@ -180,6 +180,16 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+        <Button
+            android:text="@string/reset"
+            android:layout_height="50dp"
+            android:id="@+id/reset"
+            android:layout_alignBottom="@+id/mineNumbers"
+            android:layout_alignLeft="@+id/options_cancel"
+            android:layout_alignStart="@+id/options_cancel"
+            android:background="@drawable/button"
+            android:layout_width="100dp" />
+
     </RelativeLayout>
 
 </RelativeLayout>

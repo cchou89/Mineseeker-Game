@@ -1,5 +1,8 @@
 package com.assignment2.medipack.mineseek;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +21,7 @@ public class GameActivity extends AppCompatActivity {
     Game game = Game.getInstance();
     int rows = game.rowSettings;
     int cols = game.colSettings;
+//    Vibrator vibrate = (Vibrator) this.Context.getSystemService(Context.VIBRATOR_SERVICE);
     Button buttonGrid[][] = new Button[rows][cols];
 
     @Override
@@ -32,6 +36,22 @@ public class GameActivity extends AppCompatActivity {
         updateMinesScore(board);
         //Set up initial scans found
         updateNumberOfScans(board);
+        //Set up total number of games;
+        TextView gameNum = (TextView) findViewById(R.id.gameNum);
+        int num = game.getNumGamesPlayed();
+        String gameCount = String.format(getString(R.string.game_d), num);
+        gameNum.setText(gameCount);
+        checkgameMode();
+        setHighScore();
+                
+    }
+
+    private void checkgameMode() {
+    }
+
+    private void setHighScore() {
+//        TextView highScore = (TextView);
+        
     }
 
 
@@ -65,6 +85,7 @@ public class GameActivity extends AppCompatActivity {
                         if(board.checkSquare(space) && !space.isUncovered()){
                             //Indicate it's a mine
                             button.setBackgroundResource(R.drawable.eviljelly);
+//                            vibrate.vibrate(250);
                             Log.i(TAG, "Mine");
                             if (!space.isUncovered()){
                                 space.setUncovered(true);
@@ -78,6 +99,7 @@ public class GameActivity extends AppCompatActivity {
                             button.setText(msg);
                             space.setUncovered(true);
                             updateNumberOfScans(board);
+//                            vibrate.vibrate(1000);
                             Log.i(TAG, msg);
                         }
 
