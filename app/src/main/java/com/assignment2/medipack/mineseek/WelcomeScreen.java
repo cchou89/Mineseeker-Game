@@ -10,8 +10,9 @@ import android.widget.Button;
 
 public class WelcomeScreen extends AppCompatActivity {
 
-    public static final int MILLIS = 10000;
+    public static final int MILLIS = 5000;
     private boolean skipped = false;
+    Thread welcomeLaunch = getThread();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,6 @@ public class WelcomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_screen);
         Button skipBtn = getButtonId(R.id.welcome_skip);
         skipBtn.setOnClickListener(getListener());
-        Thread welcomeLaunch = getThread();
         welcomeLaunch.start();
     }
 
@@ -61,6 +61,6 @@ public class WelcomeScreen extends AppCompatActivity {
     private void skipWelcome() {
         Intent mainMenu = new Intent(getApplicationContext(), MainMenu.class);
         startActivity(mainMenu);
-        finish();
+        finishActivity(0);
     }
 }

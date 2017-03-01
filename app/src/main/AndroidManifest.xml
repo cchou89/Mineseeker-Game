@@ -25,5 +25,6 @@
             android:screenOrientation="userLandscape"/>
         <activity android:name=".HelpMenu"
             android:screenOrientation="userLandscape" />
+        <uses-permission android:name="android.permission.VIBRATE"/>
     </application>
 </manifest>

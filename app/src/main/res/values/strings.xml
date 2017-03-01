@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Slime Seeker</string>
+    <string name="app_name">Jelly Seeker</string>
 
     <string name="title_activity_mine_seek_game">MineSeekGame</string>
     <string name="start">START</string>
@@ -19,7 +19,7 @@
     <string name="authors">Calvin Chou</string>
     <string name="play_game">PLAY GAME!</string>
     <string name="help_header">Help</string>
-    <string name="placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in magna cursus, rutrum est ac, blandit elit. Aliquam sit amet dolor at neque venenatis malesuada ut vel mauris. Suspendisse risus nulla, auctor quis metus sed, eleifend facilisis ante. Quisque vel quam quis odio laoreet consequat ac id mauris. Pellentesque vehicula augue sed lectus pretium, quis lobortis odio elementum. Sed tempus euismod nisl, ut lobortis eros venenatis et. Praesent ut tellus feugiat diam mattis rutrum. Proin vel pretium turpis. Ut a ipsum ipsum. Suspendisse vitae quam facilisis turpis ultricies cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas tellus a fermentum sollicitudin. Curabitur euismod fermentum ullamcorper.</string>
+    <string name="instructions">The Potions Master has run out of Jellies and needs your help!\n\nGo out and search for them in her backyard!Jellies hide in the bushes, so tap them to check if they\'re inside. \nThe Potions Master\'s enchantments will also scan to let you know how many Jellies are left in that row and column each time you check a space. \nFind them all with the least number of scans!</string>
     <string name="_4_x_6">4 x 6</string>
     <string name="_5_x_10">5 x 10</string>
     <string name="_6_x_15">6 x 15</string>
@@ -31,4 +31,14 @@
     <string name="_10_mines">10 Mines</string>
     <string name="_15_mines">15 Mines</string>
     <string name="_6_mines">6 Mines</string>
+    <string name="link">link</string>
+    <string name="jellyLink">http://www.gameart2d.com/jelly-squash-free-sprites.html</string>
+    <string name="bush">http://opengameart.org/content/bush-png</string>
+    <string name="fantasyGUI">http://www.gameart2d.com/free-fantasy-game-gui.html</string>
+    <string name="platformerTile">http://www.gameart2d.com/free-platformer-game-tileset.html</string>
+    <string name="RPGtile">http://opengameart.org/content/rpg-pack-base-set</string>
+    <string name="art_assets_taken_from">Art Assets taken from:</string>
+    <string name="created_by_calvin_chou_nhttp_www_cs_sfu_ca_coursecentral_276_bfraser">Created by Calvin Chou \nhttp://www.cs.sfu.ca/CourseCentral/276/bfraser/</string>
+    <string name="game_d">Game #%d</string>
+    <string name="reset">Reset</string>
 </resources>

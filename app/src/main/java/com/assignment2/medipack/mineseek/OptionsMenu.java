@@ -2,13 +2,10 @@ package com.assignment2.medipack.mineseek;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class OptionsMenu extends AppCompatActivity {
@@ -34,9 +31,6 @@ public class OptionsMenu extends AppCompatActivity {
         setContentView(R.layout.activity_options_menu);
         //Get Board Size Radio Button ids
         final RadioGroup sizes = (RadioGroup) findViewById(R.id.boardSize);
-        RadioButton smallBoard = (RadioButton) findViewById(R.id.boardSmall);
-        RadioButton medBoard = (RadioButton) findViewById(R.id.boardMedium);
-        RadioButton LrgBoard = (RadioButton) findViewById(R.id.boardLarge);
         //set RadioGroup Listener
         sizes.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -46,10 +40,6 @@ public class OptionsMenu extends AppCompatActivity {
         });
         //Get Board Size Radio Button ids
         final RadioGroup numbers = (RadioGroup) findViewById(R.id.mineNumbers);
-        RadioButton mineSmall = (RadioButton) findViewById(R.id.sixMines);
-        RadioButton mineMed = (RadioButton) findViewById(R.id.tenMines);
-        RadioButton mineLrg = (RadioButton) findViewById(R.id.fifteenMines);
-        RadioButton mineXlrg = (RadioButton) findViewById(R.id.twentyMines);
         //set RadioGroup Listener
         numbers.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -73,10 +63,9 @@ public class OptionsMenu extends AppCompatActivity {
                 game.rowSettings = row;
                 game.colSettings = col;
                 game.mineSettings = mines;
-                game.startGame();
 
-                SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                game.sharedSettings = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = game.sharedSettings.edit();
                 //Check boardSize
                 int sizeID = sizes.getCheckedRadioButtonId();
                 int mineNumID = numbers.getCheckedRadioButtonId();
@@ -86,19 +75,25 @@ public class OptionsMenu extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button resetBtn = (Button) findViewById(R.id.reset);
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                game.resetGameCount();
+            }
+        });
+
         loadSettings(sizes, numbers);
     }
 
     private void loadSettings(RadioGroup sizes, RadioGroup numbers) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
-        if(sharedPreferences!= null){
-            int numMineID = sharedPreferences.getInt("mineNumID", R.id.sixMines);
-            int boardSizeID = sharedPreferences.getInt("sizeID", R.id.boardSmall);
+        game.sharedSettings = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        if(game.sharedSettings != null){
+            int numMineID = game.sharedSettings.getInt("mineNumID", R.id.sixMines);
+            int boardSizeID = game.sharedSettings.getInt("sizeID", R.id.boardSmall);
             sizes.check(boardSizeID);
             numbers.check(numMineID);
-        }else{
-            sizes.check(R.id.boardSmall);
-            numbers.check(R.id.sixMines);
         }
     }
 

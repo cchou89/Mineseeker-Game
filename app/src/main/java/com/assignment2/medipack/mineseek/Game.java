@@ -1,7 +1,9 @@
 package com.assignment2.medipack.mineseek;
 
+import android.content.SharedPreferences;
+
 /**
- * Created by Medipack on 2017-02-24.
+ * Game class
  */
 
 public class Game {
@@ -9,8 +11,10 @@ public class Game {
     public int rowSettings;
     public int colSettings;
     public int mineSettings;
-    private int numGamesPlayed;
+    public int numGamesPlayed;
     public MineSeekBoard newGame;
+    public SharedPreferences sharedSettings;
+    public SharedPreferences gameCount;
 
     public static Game getInstance(){
         return instance;
@@ -21,12 +25,13 @@ public class Game {
         rowSettings = 4;
         colSettings = 6;
         mineSettings = 9;
-        startGame();
+        newGame = new MineSeekBoard(rowSettings, colSettings, mineSettings);
         numGamesPlayed++;
     }
 
     public void startGame(){
         newGame = new MineSeekBoard(rowSettings, colSettings, mineSettings);
+        numGamesPlayed++;
     }
 
     public void resetGameCount(){

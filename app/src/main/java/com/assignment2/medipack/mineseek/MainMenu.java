@@ -1,6 +1,8 @@
 package com.assignment2.medipack.mineseek;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,12 +32,22 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = getIntent(GameActivity.class);
+                game.gameCount = getSharedPreferences("Number Games", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = game.gameCount.edit();
+                editor.putInt("Number Games", game.getNumGamesPlayed());
+                editor.apply();
                 game.startGame();
                 startActivity(intent);
             }
         });
         optionsBtn.setOnClickListener(getListener(OptionsMenu.class));
         helpBtn.setOnClickListener(getListener(HelpMenu.class));
+        loadCount();
+    }
+
+    private void loadCount() {
+        SharedPreferences numGamesShared = getSharedPreferences("Number Games", MODE_PRIVATE);
+        game.numGamesPlayed = numGamesShared.getInt("Number Games", 1);
     }
 
     @NonNull
